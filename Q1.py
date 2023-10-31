@@ -2,7 +2,6 @@ import os
 import cv2
 import glob
 import numpy as np
-import matplotlib.pyplot as plt
 
 
 class Question1:
@@ -27,8 +26,7 @@ class Question1:
                 cv2.destroyWindow('Corner Detection-' + bmp_files[i-1])
             cv2.imshow('Corner Detection-' + bmp_files[i], imgs[i])
             cv2.waitKey(500)
-        cv2.destroyAllWindows()
-
+            
         cv2.destroyAllWindows() 
 
     # HW1-2: find intrinsic matrix

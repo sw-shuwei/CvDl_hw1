@@ -13,7 +13,7 @@ import hwFunc as func
 from Q1 import Question1
 from Q2 import Question2
 from Q3 import Question3
-# from Q4 import Question4
+from Q4 import Question4
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
@@ -140,12 +140,12 @@ class Ui_MainWindow(object):
         self.HW4_2 = QtWidgets.QPushButton(self.block_4)
         self.HW4_2.setObjectName("HW4_2")
         self.verticalLayout_4.addWidget(self.HW4_2)
-        self.HW4_3 = QtWidgets.QPushButton(self.block_4)
-        self.HW4_3.setObjectName("HW4_3")
-        self.verticalLayout_4.addWidget(self.HW4_3)
-        self.HW4_4 = QtWidgets.QPushButton(self.block_4)
-        self.HW4_4.setObjectName("HW4_4")
-        self.verticalLayout_4.addWidget(self.HW4_4)
+        self.keypoints_btn = QtWidgets.QPushButton(self.block_4)
+        self.keypoints_btn.setObjectName("keypoints_btn")
+        self.verticalLayout_4.addWidget(self.keypoints_btn)
+        self.matched_keypoints_btn = QtWidgets.QPushButton(self.block_4)
+        self.matched_keypoints_btn.setObjectName("matched_keypoints_btn")
+        self.verticalLayout_4.addWidget(self.matched_keypoints_btn)
         self.lowerHorizontalLayout.addWidget(self.block_4)
 
         self.block_5 = QtWidgets.QGroupBox(self.gridLayoutWidget)
@@ -191,8 +191,8 @@ class Ui_MainWindow(object):
 
         self.HW4_1.clicked.connect(func.hw4_1)
         self.HW4_2.clicked.connect(func.hw4_2)
-        self.HW4_3.clicked.connect(func.hw4_3)
-        self.HW4_4.clicked.connect(func.hw4_4)
+        self.keypoints_btn.clicked.connect(Q4.keypoints)
+        self.matched_keypoints_btn.clicked.connect(Q4.matched_keypoints)
 
         self.retranslateUi(MainWindow)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
@@ -243,8 +243,8 @@ class Ui_MainWindow(object):
         self.block_4.setTitle(_translate("MainWindow", "  4. SIFT"))
         self.HW4_1.setText(_translate("MainWindow", "Load Image1"))
         self.HW4_2.setText(_translate("MainWindow", "Load Image2"))
-        self.HW4_3.setText(_translate("MainWindow", "4.1 Keypoints"))
-        self.HW4_4.setText(_translate("MainWindow", "4.2 Matched Keypoints"))
+        self.keypoints_btn.setText(_translate("MainWindow", "4.1 Keypoints"))
+        self.matched_keypoints_btn.setText(_translate("MainWindow", "4.2 Matched Keypoints"))
 
         self.block_5.setTitle(_translate("MainWindow", "  5. VGG19"))
         self.HW5_1.setText(_translate("MainWindow", "Load Image"))
@@ -260,7 +260,7 @@ if __name__ == "__main__":
     Q1 = Question1()
     Q2 = Question2()
     Q3 = Question3()
-    # Q4 = Question4()
+    Q4 = Question4()
     app = QtWidgets.QApplication(sys.argv)
     MainWindow = QtWidgets.QMainWindow()
     ui = Ui_MainWindow()
