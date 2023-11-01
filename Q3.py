@@ -1,7 +1,11 @@
 import cv2
 import numpy as np
 from matplotlib import pyplot as plt
-import numpy as np
+import tkinter as tk
+
+root = tk.Tk()
+root.withdraw() 
+
 #Z = baseline * f / (d + doffs)
 baseline=342.789 #mm
 focal_length=4019.284 #pixel
@@ -15,6 +19,8 @@ class Question3:
         self.imgR = None
         self.disparity = None
         self.stereo = cv2.StereoBM_create(numDisparities=256, blockSize=25)
+        self.screen_width = root.winfo_screenwidth()
+        self.screen_height = root.winfo_screenheight()
 
     # 3-1: Stereo disparity map
     def stereo_disparity_map(self, imgL_path, imgR_path):
@@ -26,15 +32,18 @@ class Question3:
 
         self.imgL = cv2.imread(imgL_path)
         self.imgR = cv2.imread(imgR_path)
-        
-        cv2.namedWindow('imgL', cv2.WINDOW_AUTOSIZE)
-        # cv2.resizeWindow("imgL", int(self.disparity.shape[1]/4), int(self.disparity.shape[0]/4))
-        cv2.setMouseCallback('imgL', self.draw_circle)
-        cv2.imshow('imgL', self.imgL)
 
-        cv2.namedWindow('disparity', cv2.WINDOW_AUTOSIZE)
-        # cv2.resizeWindow("disparity", int(self.disparity.shape[1]/4), int(self.disparity.shape[0]/4))
-        cv2.imshow('disparity', self.disparity)   
+        cv2.namedWindow('imgL', cv2.WINDOW_NORMAL)
+        cv2.moveWindow('imgL', 0, 200)
+        cv2.imshow('imgL', self.imgL)
+        self.resize_and_maintain_aspect_ratio('imgL', self.imgL.shape[1], self.imgL.shape[0], int(self.screen_width/3))
+
+        cv2.namedWindow('disparity', cv2.WINDOW_NORMAL)
+        cv2.moveWindow('disparity', int(2*self.screen_width/3), 200)
+        cv2.imshow('disparity', self.disparity)
+        self.resize_and_maintain_aspect_ratio('disparity', self.disparity.shape[1], self.disparity.shape[0], int(self.screen_width/3))
+
+        cv2.setMouseCallback('imgL', self.draw_circle)
         cv2.waitKey(0)
         cv2.destroyAllWindows()
 
@@ -56,8 +65,13 @@ class Question3:
             
             if img[y][x][0] != 0:       
                 cv2.circle(imgR_dot,(x-z,y),25,(0,255,0),-1)
-            
-            cv2.namedWindow('imgR_dot', cv2.WINDOW_AUTOSIZE)
-            # cv2.resizeWindow("imgR_dot", int(imgR_dot.shape[1]/4), int(imgR_dot.shape[0]/4))
-            cv2.imshow('imgR_dot', imgR_dot)           
+
+            cv2.namedWindow('imgR_dot', cv2.WINDOW_NORMAL)
+            cv2.moveWindow('imgR_dot', int(self.screen_width/3), 200)
+            cv2.imshow('imgR_dot', imgR_dot)
+            self.resize_and_maintain_aspect_ratio('imgR_dot', imgR_dot.shape[1], imgR_dot.shape[0], int(self.screen_width/3))
             cv2.waitKey(0)
+    
+    def resize_and_maintain_aspect_ratio(self, winName, oldWidth, oldHeight, newWidth):
+        new_height = int(oldHeight * (newWidth / oldWidth))
+        cv2.resizeWindow(winName, newWidth, new_height)

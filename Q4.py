@@ -2,7 +2,7 @@ import cv2
 
 class Question4:
     def __init__(self):
-        self.word = ''
+        self.word = None
         self.img1 = None
     
     # 4-1: show keypoints

@@ -63,20 +63,14 @@ class Ui_MainWindow(object):
         self.verticalLayout_0.addWidget(self.open_image_R_btn)
         self.upperHorizontalLayout.addWidget(self.block_0)
 
+        ############### block_1: 第一題 ###############
         self.block_1 = QtWidgets.QGroupBox(self.centralwidget)
         self.block_1.setObjectName("block_1")
 
-        self.verticalLayout_1 = QtWidgets.QVBoxLayout(self.block_1)
-        self.verticalLayout_1.setContentsMargins(-1, 8, -1, 8)
-        self.verticalLayout_1.setObjectName("verticalLayout_1")
-
         self.find_corners_btn = QtWidgets.QPushButton(self.block_1)
         self.find_corners_btn.setObjectName("find_corners_btn")
-        self.verticalLayout_1.addWidget(self.find_corners_btn)
-
         self.find_intrinsic_matrix_btn = QtWidgets.QPushButton(self.block_1)
         self.find_intrinsic_matrix_btn.setObjectName("find_intrinsic_matrix_btn")
-        self.verticalLayout_1.addWidget(self.find_intrinsic_matrix_btn)
         
         self.group_1_3 = QtWidgets.QGroupBox(self.block_1)
         self.group_1_3.setObjectName("group_1_3")
@@ -90,80 +84,87 @@ class Ui_MainWindow(object):
         for i in range(1, 16):
             self.choose_bmp_img.addItem(str(i))
 
-        self.verticalLayout_1_3 = QtWidgets.QVBoxLayout(self.group_1_3)
-        self.verticalLayout_1_3.setObjectName("verticalLayout_1_3")
-
-        self.verticalLayout_1_3.addWidget(self.choose_bmp_img)
-        self.verticalLayout_1_3.addWidget(self.find_extrinsic_matrix_btn)
-        self.verticalLayout_1.addWidget(self.group_1_3)
-
         self.find_distortion_matrix_btn = QtWidgets.QPushButton(self.block_1)
         self.find_distortion_matrix_btn.setObjectName("find_distortion_matrix_btn")
-        self.verticalLayout_1.addWidget(self.find_distortion_matrix_btn)
 
         self.show_undistorted_result_btn = QtWidgets.QPushButton(self.block_1)
         self.show_undistorted_result_btn.setObjectName("show_undistorted_result_btn")
+
+        # block_1 排版
+        self.verticalLayout_1 = QtWidgets.QVBoxLayout(self.block_1)
+        self.verticalLayout_1.setContentsMargins(-1, 8, -1, 8)
+        self.verticalLayout_1.setObjectName("verticalLayout_1")
+        self.verticalLayout_1.addWidget(self.find_corners_btn)
+        self.verticalLayout_1.addWidget(self.find_intrinsic_matrix_btn)
         self.verticalLayout_1.addWidget(self.show_undistorted_result_btn)
+        self.verticalLayout_1_3 = QtWidgets.QVBoxLayout(self.group_1_3)
+        self.verticalLayout_1_3.setObjectName("verticalLayout_1_3")
+        self.verticalLayout_1_3.addWidget(self.choose_bmp_img)
+        self.verticalLayout_1_3.addWidget(self.find_extrinsic_matrix_btn)
+        self.verticalLayout_1.addWidget(self.find_distortion_matrix_btn)
+        self.verticalLayout_1.addWidget(self.group_1_3)
         self.upperHorizontalLayout.addWidget(self.block_1)
 
+        ############### block_2: 第二題 ###############
         self.block_2 = QtWidgets.QGroupBox(self.centralwidget)
         self.block_2.setObjectName("block_2")
-        self.verticalLayout_2 = QtWidgets.QVBoxLayout(self.block_2)
-        self.verticalLayout_2.setContentsMargins(-1, 8, -1, 8)
-        self.verticalLayout_2.setObjectName("verticalLayout_2")
 
         self.input_words = QLineEdit(self.block_2)
         self.input_words.setObjectName("input_words")
-        self.verticalLayout_2.addWidget(self.input_words)
-
         self.show_words_on_boards_btn = QtWidgets.QPushButton(self.block_2)
         self.show_words_on_boards_btn.setObjectName("show_words_on_boards_btn")
-        self.verticalLayout_2.addWidget(self.show_words_on_boards_btn)
-
         self.show_words_vertically_btn = QtWidgets.QPushButton(self.block_2)
         self.show_words_vertically_btn.setObjectName("show_words_vertically_btn")
+
+        # block_2 排版
+        self.verticalLayout_2 = QtWidgets.QVBoxLayout(self.block_2)
+        self.verticalLayout_2.setContentsMargins(-1, 8, -1, 8)
+        self.verticalLayout_2.setObjectName("verticalLayout_2")
+        self.verticalLayout_2.addWidget(self.input_words)
+        self.verticalLayout_2.addWidget(self.show_words_on_boards_btn)
         self.verticalLayout_2.addWidget(self.show_words_vertically_btn)
         self.upperHorizontalLayout.addWidget(self.block_2)
 
+        ############### block_3: 第三題 ###############
         self.block_3 = QtWidgets.QGroupBox(self.centralwidget)
         self.block_3.setObjectName("block_3")
+
+        self.stereo_display_map_btn = QtWidgets.QPushButton(self.block_3)
+        self.stereo_display_map_btn.setObjectName("stereo_display_map_btn")
+
+        # block_3 排版
         self.verticalLayout_3 = QtWidgets.QVBoxLayout(self.block_3)
         self.verticalLayout_3.setContentsMargins(-1, 8, -1, 8)
         self.verticalLayout_3.setObjectName("verticalLayout_3")
-        self.stereo_display_map_btn = QtWidgets.QPushButton(self.block_3)
-        self.stereo_display_map_btn.setObjectName("stereo_display_map_btn")
         self.verticalLayout_3.addWidget(self.stereo_display_map_btn)
         self.upperHorizontalLayout.addWidget(self.block_3)
 
+        ############### block_4: 第四題 ###############
         self.block_4 = QtWidgets.QGroupBox(self.centralwidget)
         self.block_4.setObjectName("block_4")
+
+        self.load_img1_btn = QtWidgets.QPushButton(self.block_4)
+        self.load_img1_btn.setObjectName("load_img1_btn")
+        self.load_img2_btn = QtWidgets.QPushButton(self.block_4)
+        self.load_img2_btn.setObjectName("load_img2_btn")
+        self.keypoints_btn = QtWidgets.QPushButton(self.block_4)
+        self.keypoints_btn.setObjectName("keypoints_btn")
+        self.matched_keypoints_btn = QtWidgets.QPushButton(self.block_4)
+        self.matched_keypoints_btn.setObjectName("matched_keypoints_btn")
+        
+        # block_4 排版
         self.verticalLayout_4 = QtWidgets.QVBoxLayout(self.block_4)
         self.verticalLayout_4.setContentsMargins(-1, 8, -1, 8)
         self.verticalLayout_4.setObjectName("verticalLayout_4")
-        self.load_img1_btn = QtWidgets.QPushButton(self.block_4)
-        self.load_img1_btn.setObjectName("load_img1_btn")
         self.verticalLayout_4.addWidget(self.load_img1_btn)
-        self.load_img2_btn = QtWidgets.QPushButton(self.block_4)
-        self.load_img2_btn.setObjectName("load_img2_btn")
         self.verticalLayout_4.addWidget(self.load_img2_btn)
-        self.keypoints_btn = QtWidgets.QPushButton(self.block_4)
-        self.keypoints_btn.setObjectName("keypoints_btn")
         self.verticalLayout_4.addWidget(self.keypoints_btn)
-        self.matched_keypoints_btn = QtWidgets.QPushButton(self.block_4)
-        self.matched_keypoints_btn.setObjectName("matched_keypoints_btn")
         self.verticalLayout_4.addWidget(self.matched_keypoints_btn)
         self.lowerHorizontalLayout.addWidget(self.block_4)
 
+        ############### block_5: 第五題 ###############
         self.block_5 = QtWidgets.QGroupBox(self.centralwidget)
         self.block_5.setObjectName("block_5")
-        self.img_and_btns_5 = QtWidgets.QHBoxLayout(self.block_5)
-        self.img_and_btns_5.setObjectName("img_and_btns_5")
-        self.verticalLayout_5_btn = QtWidgets.QVBoxLayout(self.block_5)
-        self.verticalLayout_5_btn.setContentsMargins(-1, 8, -1, 8)
-        self.verticalLayout_5_btn.setObjectName("verticalLayout_5_btn")
-        self.verticalLayout_5_pred_img = QtWidgets.QVBoxLayout(self.block_5)
-        self.verticalLayout_5_pred_img.setContentsMargins(-1, 8, -1, 8)
-        self.verticalLayout_5_pred_img.setObjectName("verticalLayout_5_pred_img")
 
         self.load_image_btn = QtWidgets.QPushButton(self.block_5)
         self.load_image_btn.setObjectName("load_image_btn")
@@ -180,25 +181,28 @@ class Ui_MainWindow(object):
         self.pred_result = QLabel()
         self.pred_result.setText("")
         
+        # block_5 排版
+        self.img_and_btns_5 = QtWidgets.QHBoxLayout(self.block_5)
+        self.img_and_btns_5.setObjectName("img_and_btns_5")
         self.btn = QtWidgets.QWidget()
         self.img = QtWidgets.QWidget()
         btn_layout = QtWidgets.QVBoxLayout(self.btn)
         img_layout = QtWidgets.QVBoxLayout(self.img)
-
-        # Add buttons to btn_layout
+        # btn_layout
         btn_layout.addWidget(self.load_image_btn)
         btn_layout.addWidget(self.show_augumentation_imgs_btn)
         btn_layout.addWidget(self.show_model_structure_btn)
         btn_layout.addWidget(self.show_acc_loss_btn)
         btn_layout.addWidget(self.inference_btn)
-
+        # img_layout
         img_layout.addWidget(self.test_img)
         img_layout.addWidget(self.pred_result)
-
         self.img_and_btns_5.addWidget(self.btn)
         self.img_and_btns_5.addWidget(self.img)
         self.lowerHorizontalLayout.addWidget(self.block_5)
 
+        # block_0, block_1, block_2, block_3 同高
+        # block_4,block_5 同高
         self.upperHorizontalLayout.setStretch(0, 1)  # block_0
         self.upperHorizontalLayout.setStretch(1, 1)  # block_1
         self.upperHorizontalLayout.setStretch(2, 1)  # block_2
@@ -311,7 +315,6 @@ class Ui_MainWindow(object):
         self.find_extrinsic_matrix_btn.setText(_translate("MainWindow", "1.3 Find Extrinsic"))
         self.find_distortion_matrix_btn.setText(_translate("MainWindow", "1.4 Find Distortion"))
         self.show_undistorted_result_btn.setText(_translate("MainWindow", "1.5 Show Result"))
-
 
         self.block_2.setTitle(_translate("MainWindow", "  2. Augmented Reality"))
         self.show_words_on_boards_btn.setText(_translate("MainWindow", "2.1 Show Words on Boards"))

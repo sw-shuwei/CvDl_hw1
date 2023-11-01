@@ -3,10 +3,9 @@ import cv2
 import glob
 import numpy as np
 
-
 class Question1:
     def __init__(self):
-        self.word = ''
+        self.word = None
 
     # HW1-1: Find Corners
     def find_corners(self):
