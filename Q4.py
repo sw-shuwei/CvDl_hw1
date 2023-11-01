@@ -3,11 +3,12 @@ import cv2
 class Question4:
     def __init__(self):
         self.word = ''
+        self.img1 = None
     
     # 4-1: show keypoints
-    def keypoints(self):
+    def keypoints(self, img_path):
         # Loading the image
-        img = cv2.imread('Q4_image/Left.jpg')
+        img = cv2.imread(img_path)
         
         # Converting image to grayscale
         gray= cv2.cvtColor(img,cv2.COLOR_BGR2GRAY)
@@ -25,10 +26,10 @@ class Question4:
         cv2.destroyAllWindows()
     
     # 4-2: show matched keypoints
-    def matched_keypoints(self):
+    def matched_keypoints(self, img1_path, img2_path):
         # Loading the image
-        img1 = cv2.imread('Q4_image/Left.jpg',cv2.IMREAD_GRAYSCALE)  # queryImage
-        img2 = cv2.imread('Q4_image/Right.jpg',cv2.IMREAD_GRAYSCALE) # trainImage
+        img1 = cv2.imread(img1_path,cv2.IMREAD_GRAYSCALE)  # queryImage
+        img2 = cv2.imread(img2_path,cv2.IMREAD_GRAYSCALE) # trainImage
         
         # Initiate SIFT detector
         sift = cv2.SIFT_create()

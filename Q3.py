@@ -9,28 +9,34 @@ doffs=279.184 #pixel
 
 class Question3:
     def __init__(self):
-        imgL = cv2.imread('Q3_image/imL.png',0)
-        imgR = cv2.imread('Q3_image/imR.png',0)
+        self.imgL0 = None
+        self.imgR0 = None
+        self.imgL = None
+        self.imgR = None
+        self.disparity = None
+        self.stereo = cv2.StereoBM_create(numDisparities=256, blockSize=25)
 
-        stereo = cv2.StereoBM_create(numDisparities=256, blockSize=25)
-        self.disparity = stereo.compute(imgL,imgR)
+    # 3-1: Stereo disparity map
+    def stereo_disparity_map(self, imgL_path, imgR_path):
+        self.imgL0 = cv2.imread(imgL_path, 0)
+        self.imgR0 = cv2.imread(imgR_path, 0)
+
+        self.disparity = self.stereo.compute(self.imgL0, self.imgR0)
         self.disparity = cv2.normalize(self.disparity, None, alpha=0, beta=255, norm_type=cv2.NORM_MINMAX, dtype=cv2.CV_8U)
 
-
-    def stereoDisparityMap(self):
-        imgL = cv2.imread('Q3_image/imL.png')
+        self.imgL = cv2.imread(imgL_path)
+        self.imgR = cv2.imread(imgR_path)
         
         cv2.namedWindow('imgL', cv2.WINDOW_AUTOSIZE)
         # cv2.resizeWindow("imgL", int(self.disparity.shape[1]/4), int(self.disparity.shape[0]/4))
         cv2.setMouseCallback('imgL', self.draw_circle)
-        cv2.imshow('imgL',imgL)
+        cv2.imshow('imgL', self.imgL)
 
         cv2.namedWindow('disparity', cv2.WINDOW_AUTOSIZE)
         # cv2.resizeWindow("disparity", int(self.disparity.shape[1]/4), int(self.disparity.shape[0]/4))
         cv2.imshow('disparity', self.disparity)   
         cv2.waitKey(0)
         cv2.destroyAllWindows()
-
 
     def draw_circle(self, event,x,y,flags,param):
         global mouseX,mouseY
@@ -45,7 +51,7 @@ class Question3:
             print(x,y)
             print(depth)
 
-            imgR_dot = cv2.imread('Q3_image/imR.png')
+            imgR_dot = self.imgR.copy()
             z=img[y][x][0]
             
             if img[y][x][0] != 0:       

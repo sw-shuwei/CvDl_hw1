@@ -4,17 +4,20 @@ import glob
 
 class Question2:
     def __init__(self):
-        self.word = ''
+        self.word = None
+        self.floder = None
 
     # HW2-1: show words on board
-    def show_words_on_board(self, text):
+    def show_words_on_board(self, floder, text):
         fs = cv2.FileStorage('Q2_Image/Q2_lib/alphabet_lib_onboard.txt', cv2.FILE_STORAGE_READ)
+        self.floder = floder
         self.word = text
         self.chessboard_AR(fs)
 
     # HW2-2: show words vertically on board
-    def show_words_vertically(self, text):
+    def show_words_vertically(self, floder, text):
         fs = cv2.FileStorage('Q2_Image/Q2_lib/alphabet_lib_vertical.txt', cv2.FILE_STORAGE_READ)
+        self.floder = floder
         self.word = text
         self.chessboard_AR(fs)
 
@@ -48,7 +51,7 @@ class Question2:
         objpoints = []  # 3d point in real world space
         imgpoints = []  # 2d points in image plane.
 
-        images = glob.glob('Q2_Image/*.bmp')
+        images = glob.glob(self.floder+'/*.bmp')
         for fname in images:
             img = cv2.imread(fname)
             img = cv2.resize(img, (int(img.shape[1] / 4), int(img.shape[0] / 4)), interpolation=cv2.INTER_CUBIC)

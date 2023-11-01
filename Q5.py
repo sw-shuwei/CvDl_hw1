@@ -1,8 +1,11 @@
 import os
 import cv2
 import glob
+from PIL import Image
 import numpy as np
 from matplotlib import pyplot as plt
+import torch
+import torch.nn as nn
 import torchvision
 import torchvision.transforms as transforms
 from torchsummary import summary
@@ -10,7 +13,14 @@ from torchsummary import summary
 
 class Question5:
     def __init__(self):
+        # Device
+        self.device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
         self.classes = ('plane', 'car', 'bird', 'cat', 'deer', 'dog', 'frog', 'horse', 'ship', 'truck')
+        # Load Weight
+        self.checkpoint = torch.load('cifar10_vgg19.pth', map_location=torch.device('cpu'))
+        self.model = torchvision.models.vgg19_bn(num_classes=10)
+        self.model.load_state_dict(self.checkpoint)
+        self.model.eval()
     
     # 5-1: Show augumentaion images
     def show_augumentation_imgs(self):
@@ -55,5 +65,26 @@ class Question5:
         cv2.destroyAllWindows()
 
     # 5-4: Inference
-    def inference(self):
-        pass
+    def inference(self, img_path):
+        img = np.array(plt.imread(img_path)).astype(np.uint8)
+        img = np.array(Image.fromarray(img).resize((32, 32))) # (3, 32, 32)
+        img_batch = img.reshape(-1, 3, 32, 32)
+        img_tensor = torch.from_numpy(img_batch).float()
+
+        output = self.model(img_tensor.to(self.device))
+        _, predicted = torch.max(output.data, 1)
+        pre = predicted.cpu().numpy()
+        
+        print(self.classes[pre[0]])
+
+        # 將輸出轉換成機率
+        probabilities = nn.functional.softmax(output[0], dim=0)
+
+        plt.figure(figsize=(8, 6))
+        plt.bar(self.classes, probabilities.cpu().detach().numpy())
+        plt.xticks(rotation=45)
+        plt.ylabel('Probability')
+        plt.title('Probability of each class')
+        plt.show()
+        
+        return self.classes[pre[0]]
