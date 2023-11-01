@@ -1,13 +1,10 @@
-import os
 import cv2
-import glob
-import numpy as np
-
 
 class Question4:
     def __init__(self):
         self.word = ''
     
+    # 4-1: show keypoints
     def keypoints(self):
         # Loading the image
         img = cv2.imread('Q4_image/Left.jpg')
@@ -27,6 +24,7 @@ class Question4:
         cv2.waitKey(0)
         cv2.destroyAllWindows()
     
+    # 4-2: show matched keypoints
     def matched_keypoints(self):
         # Loading the image
         img1 = cv2.imread('Q4_image/Left.jpg',cv2.IMREAD_GRAYSCALE)  # queryImage

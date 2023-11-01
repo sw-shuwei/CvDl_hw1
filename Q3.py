@@ -21,12 +21,12 @@ class Question3:
         imgL = cv2.imread('Q3_image/imL.png')
         
         cv2.namedWindow('imgL', cv2.WINDOW_AUTOSIZE)
-        cv2.resizeWindow("imgL", int(self.disparity.shape[1]/4), int(self.disparity.shape[0]/4))
+        # cv2.resizeWindow("imgL", int(self.disparity.shape[1]/4), int(self.disparity.shape[0]/4))
         cv2.setMouseCallback('imgL', self.draw_circle)
         cv2.imshow('imgL',imgL)
 
         cv2.namedWindow('disparity', cv2.WINDOW_AUTOSIZE)
-        cv2.resizeWindow("disparity", int(self.disparity.shape[1]/4), int(self.disparity.shape[0]/4))
+        # cv2.resizeWindow("disparity", int(self.disparity.shape[1]/4), int(self.disparity.shape[0]/4))
         cv2.imshow('disparity', self.disparity)   
         cv2.waitKey(0)
         cv2.destroyAllWindows()
@@ -52,6 +52,6 @@ class Question3:
                 cv2.circle(imgR_dot,(x-z,y),25,(0,255,0),-1)
             
             cv2.namedWindow('imgR_dot', cv2.WINDOW_AUTOSIZE)
-            cv2.resizeWindow("imgR_dot", int(imgR_dot.shape[1]/4), int(imgR_dot.shape[0]/4))
+            # cv2.resizeWindow("imgR_dot", int(imgR_dot.shape[1]/4), int(imgR_dot.shape[0]/4))
             cv2.imshow('imgR_dot', imgR_dot)           
             cv2.waitKey(0)
