@@ -58,7 +58,7 @@ class Question5:
     
     # 5-3: Show accuracy and loss curve
     def show_acc_loss(self):
-        img = cv2.imread('Q5_image/Q5_3/loss_accuracy_curves.png',cv2.IMREAD_GRAYSCALE)  # queryImage
+        img = cv2.imread('Q5_image/Q5_3/loss_accuracy_curves.png')  # queryImage
         cv2.imshow('Accuracy and Loss', img)
         cv2.waitKey(0)
         cv2.destroyAllWindows()
